@@ -7,6 +7,7 @@ fs.readFile('input.txt', 'utf8', function (err, contents) {
     let text = '';
 
     for (let iterator of list) {
+        iterator=iterator.trim();
         if (iterator.split('|').length != 2 ) {
             wrongFormat += iterator;
         } else {
@@ -28,7 +29,7 @@ fs.readFile('input.txt', 'utf8', function (err, contents) {
                     if (tempPercent > percent) percent = tempPercent;
 
                 }
-                if (percent < 80) {
+                if (percent < 70) {
                     output.push(iterator);
                 }
             }
@@ -36,7 +37,7 @@ fs.readFile('input.txt', 'utf8', function (err, contents) {
     }
     output.sort();
     output.forEach(element => {
-        text += element;
+        text += element+'\n';
     });
 
     fs.writeFile('output.txt', text, 'utf8', function (err) {
